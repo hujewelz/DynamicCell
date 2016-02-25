@@ -26,6 +26,7 @@
 创建好之后是这样的：  
 
 ![屏幕快照 2016-02-24 上午10.35.26.png](http://upload-images.jianshu.io/upload_images/1351863-af6d55fece3b3897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 下面来看一下约束，这个是决定你的cell能否自适应的关键。    
 UIImageView约束如下：
  1. 左边距离`contentView`左边15
