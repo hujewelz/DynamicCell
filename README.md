@@ -1,7 +1,7 @@
 # iOS7和iOS下的自适应cell
 我们开发中，在使用UITableView的时候经常会遇到这样的需求：table view的cell中的内容是动态的。于是我们就在table view的代理中手动去计算cell中的内容高度。这样做有两个问题：  
-1. 计算代码冗长、复杂。
-2. 每次 reload tableview 的时候，系统会先计算出每一个 cell 的高度，等所有高度计算完毕，确定了 tableview 的`contentSize`后，才开始渲染视图并显示在屏幕上。如果数据比较多，就会感受到非常明显的卡顿。
+ 1. 计算代码冗长、复杂。
+ 2. 每次 reload tableview 的时候，系统会先计算出每一个 cell 的高度，等所有高度计算完毕，确定了 tableview 的`contentSize`后，才开始渲染视图并显示在屏幕上。如果数据比较多，就会感受到非常明显的卡顿。
 
 所以，我们应该寻找其他的解决方案。如果你的项目只支持iOS8及以上，那么恭喜你，你只用简单的几步就可以实现自适应cell了。如果是iOS7也没关系，后面我也会讲到，如何在iOS下实现自适应cell。
 
@@ -13,9 +13,9 @@
 通过实现这个代理方法，解决了首次加载 table view 出现的性能问题，但是并没有让我们从复杂的计算中解脱出来。下面我会通过例子来讲解一下在iOS7和iOS8中自适应cell的实现。
 
 ## iOS8的自适应cell
-要想让table view的cell自适应，有几个要点：
-    1. 设置的` AutoLayout` 约束必须让 cell 的 `contentView `知道如何自动伸展。关键点是 `contentView` 的 4 个边都要设置连接到内容的约束，并且内容是会动态改变尺寸的。其实只要记住，我们在设置约束时只要能让`contentView`能被内容撑起来就可以了。
-    2. UITableView 的`rowHeight` 的值要设置为 `UITableViewAutomaticDimension`。
+要想让table view的cell自适应，有几个要点：  
+    1. 设置的` AutoLayout` 约束必须让 cell 的 `contentView `知道如何自动伸展。关键点是 `contentView` 的 4 个边都要设置连接到内容的约束，并且内容是会动态改变尺寸的。其实只要记住，我们在设置约束时只要能让`contentView`能被内容撑起来就可以了。  
+    2. UITableView 的`rowHeight` 的值要设置为 `UITableViewAutomaticDimension`。  
     3. 和 iOS 7 一样，可以实现 estimatedHeightForRowAtIndexPath 代理方法提升 table view 的第一次加载速度。也可以直接这样：` self.tableView.estimatedRowHeight =  60`。
 
 好了咱们来直接上代码：
