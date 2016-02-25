@@ -18,26 +18,26 @@
     2. UITableView 的`rowHeight` 的值要设置为 `UITableViewAutomaticDimension`。  
     3. 和 iOS 7 一样，可以实现 estimatedHeightForRowAtIndexPath 代理方法提升 table view 的第一次加载速度。也可以直接这样：` self.tableView.estimatedRowHeight =  60`。
 
-好了咱们来直接上代码：
-在 Xcode 中新建一个项目，设置好tableView后，自定义一个`UITableViewCell`:
+好了咱们来直接上代码：  
+在 Xcode 中新建一个项目，设置好tableView后，自定义一个`UITableViewCell`:  
 
 ![屏幕快照 2016-02-24 上午10.25.12.png](http://upload-images.jianshu.io/upload_images/1351863-2776d0ed9c975732.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-创建好之后是这样的：
+创建好之后是这样的：  
 
 ![屏幕快照 2016-02-24 上午10.35.26.png](http://upload-images.jianshu.io/upload_images/1351863-af6d55fece3b3897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-下面来看一下约束，这个是决定你的cell能否自适应的关键。
+下面来看一下约束，这个是决定你的cell能否自适应的关键。    
 UIImageView约束如下：
-1. 左边距离`contentView`左边15
-2. 顶部距离`contentView`顶部8
-3.  `width` 和 `height `为 40
-4. 底部距离`contentView`底部**大于或等于0**（为了防止文本内容太少，导致 cell 高度小于图片高度）
+ 1. 左边距离`contentView`左边15
+ 2. 顶部距离`contentView`顶部8
+ 3.  `width` 和 `height `为 40
+ 4. 底部距离`contentView`底部**大于或等于0**（为了防止文本内容太少，导致 cell 高度小于图片高度）
 
 UILabel有四个约束：
-1. 左边距离图片8
-2. 右边距离`contentView`右边15
-3. 顶部距离`contentView`顶部8
-4. 底部距离`contentView`底部4
+ 1. 左边距离图片8
+ 2. 右边距离`contentView`右边15
+ 3. 顶部距离`contentView`顶部8
+ 4. 底部距离`contentView`底部4
 
 不要忘了将UILabel的`numberOfLines `设为0
 以上约束就可以将`contentView`撑起来了。  
